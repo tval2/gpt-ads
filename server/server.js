@@ -13,11 +13,6 @@
 | - Actually starts the webserver
 */
 
-// validator runs some basic checks to make sure you've set everything up correctly
-// this is a tool provided by staff, so you don't need to worry about it
-const validator = require("./validator");
-validator.checkSetup();
-
 //import libraries needed for the webserver to work!
 const express = require("express"); // backend framework for our node server.
 const mongoose = require("mongoose"); // library to connect to MongoDB
@@ -28,9 +23,9 @@ const api = require("./api");
 // Server configuration below
 // TODO change connection URL after setting up your own database
 const mongoConnectionURL =
-  "mongodb+srv://weblab:jAT4po55IAgYWQgR@catbook-ylndp.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://gpt_user:34auBfAIcfAAzyGB@gpt-cluster0.fgct9vd.mongodb.net/?retryWrites=true&w=majority";
 // TODO change database name to the name you chose
-const databaseName = "catbook";
+const databaseName = "Ads-GPT";
 
 // connect to mongodb
 mongoose
@@ -44,7 +39,6 @@ mongoose
 
 // create a new express server
 const app = express();
-app.use(validator.checkRoutes);
 
 // set up bodyParser, which allows us to process POST requests
 app.use(express.json());

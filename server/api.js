@@ -10,45 +10,25 @@
 const express = require("express");
 
 // import models so we can interact with the database
-const Story = require("./models/story");
-const Comment = require("./models/comment");
+const Advertisement = require("./advertisement");
 
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
-// we haven't set up user login yet, so just
-// use a hardcoded name for now
-// TODO change to a unique name for workshop
 const MY_NAME = "Anonymous User";
 
-router.get("/stories", (req, res) => {
+router.get("/ads", (req, res) => {
   // empty selector means get all documents
-  Story.find({}).then((stories) => res.send(stories));
+  Advertisement.find({}).then((ads) => res.send(ads));
 });
 
-router.post("/story", (req, res) => {
-  const newStory = new Story({
+router.post("/ad", (req, res) => {
+  const newAdvertisement = new Advertisement({
     creator_name: MY_NAME,
     content: req.body.content,
   });
 
-  newStory.save().then((story) => res.send(story));
-});
-
-router.get("/comment", (req, res) => {
-  Comment.find({ parent: req.query.parent }).then((comments) => {
-    res.send(comments);
-  });
-});
-
-router.post("/comment", (req, res) => {
-  const newComment = new Comment({
-    creator_name: MY_NAME,
-    parent: req.body.parent,
-    content: req.body.content,
-  });
-
-  newComment.save().then((comment) => res.send(comment));
+  newAdvertisement.save().then((ad) => res.send(ad));
 });
 
 // anything else falls to this "not found" case
