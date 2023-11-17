@@ -18,8 +18,17 @@ const router = express.Router();
 const MY_NAME = "Anonymous User";
 
 router.get("/ads", (req, res) => {
-  // empty selector means get all documents
-  Advertisement.find({}).then((ads) => res.send(ads));
+  let query;
+  if (Object.keys(req.query).length === 0) {
+    // empty selector means get all documents
+    query = {};
+  } else if (req.query.creator_name !== undefined) {
+    query = { creator_name: req.query.creator_name };
+  } else {
+    res.status(404).send({ msg: "API route not found" });
+  }
+
+  Advertisement.find(query).then((ads) => res.send(ads));
 });
 
 router.post("/ad", (req, res) => {
