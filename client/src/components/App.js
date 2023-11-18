@@ -15,14 +15,12 @@ const App = () => {
   return (
     // <> is like a <div>, but won't show
     // up in the DOM tree
-    <>
-      <div className="App-container">
-        <Router>
-          <Privacy path="/privacy" />
-          <NotFound default />
-        </Router>
-      </div>
-    </>
+    <div className="App-container">
+      <Router>
+        <Privacy path="/privacy" />
+        <NotFound default />
+      </Router>
+    </div>
   );
 };
 
