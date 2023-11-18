@@ -14,6 +14,7 @@
 */
 
 //import libraries needed for the webserver to work!
+require("dotenv").config();
 const express = require("express"); // backend framework for our node server.
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
