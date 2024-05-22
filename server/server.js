@@ -36,8 +36,7 @@ require("dotenv").config();
 
 // Server configuration below
 // TODO change connection URL after setting up your own database
-const mongoConnectionURL =
-  "mongodb+srv://gpt_user:34auBfAIcfAAzyGB@gpt-cluster0.fgct9vd.mongodb.net/?retryWrites=true&w=majority";
+const mongoConnectionURL = ""
 // TODO change database name to the name you chose
 const databaseName = "Ads-GPT";
 
